@@ -1,0 +1,172 @@
+.more-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; 
+}
+
+.more {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 0.50rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-family: 'Lato-Medium', sans-serif;
+  border: none;
+}
+
+.more:hover {
+  text-decoration: none;
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.col {
+  position: relative;
+  margin: 0 auto; 
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-shadow: none;
+  outline: none;
+}
+
+.form:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+textarea.form {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.comments {
+  position: relative;
+  min-height: 50vh;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  height: 200px;
+}
+
+.comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.cardcomment {
+  background-color: #fff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  margin: 0 1rem;
+  max-width: 450px;
+  text-align: left;
+}
+
+.bodycomment {
+  margin-left: 1.5rem;
+}
+
+h5 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+span {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #999;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.text {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+}
+
+.blog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+
+img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+p.creator {
+  margin: 0;
+  font-size: 14px;
+  color: #999;
+}
+
+h2.title {
+  margin: 10px 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+p.content {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
