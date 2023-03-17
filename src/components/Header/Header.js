@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const Header = () => {
+    const { auth } = useContext(AuthContext);
+
     return (
         <nav
             className="navbar navbar-expand-lg navbar-light bg-light bg-transparent"
@@ -31,15 +35,19 @@ export const Header = () => {
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
-                        <Link to="/login" className="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">
-                            login
-                        </Link>
-                        <Link to="/register" className="btn btn-info my-2 my-sm-0 text-uppercase">
-                            sign up
-                        </Link>
-                        <Link to="/logout" className="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">
-                            logout
-                        </Link>
+                        {auth.accessToken
+                            ? <Link to="/logout" className="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">
+                                logout
+                            </Link>
+                            : <div>
+                                <Link to="/login" className="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">
+                                    login
+                                </Link>
+                                <Link to="/register" className="btn btn-info my-2 my-sm-0 text-uppercase">
+                                    sign up
+                                </Link>
+                            </div>
+                        }
                     </form>
                 </div>
             </div>

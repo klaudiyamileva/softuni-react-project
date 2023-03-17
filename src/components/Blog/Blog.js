@@ -11,6 +11,11 @@ export const Blog = () => {
                 <p className={styles.content}>Donec non sem mi. In hac habitasse platea dictumst. Nullam a feugiat</p>
             </div>
 
+            <div className={styles['more-wrapper']}>
+                <Link to='/blog/edit' className={styles.more}>Edit</Link>
+                <Link to='' className={styles.more}>Delete</Link>
+            </div>
+
             <div className={styles.comments}>
                 <h2>Comments</h2>
                 <div className={styles.comment}>
@@ -31,15 +36,11 @@ export const Blog = () => {
                 </div>
             </div>
 
-            <div className={styles['more-wrapper']}>
-                <Link to='/blog/edit' className={styles.more}>Edit</Link>
-                <Link to='' className={styles.more}>Delete</Link>
-            </div>
-
             <form className={styles.col} id="contact">
                 <h4> Add Your Comment </h4>
                 <input type="text" className={styles.form} placeholder="Full Name" />
-                <textarea className={styles.form} placeholder="Comment" defaultValue="" />
+                <input type="email" className={styles.form} placeholder="Email" />
+                <textarea className={styles.form} placeholder="Comment" />
                 <input type="submit" className={styles.more} value="SENT" />
             </form>
         </div>
