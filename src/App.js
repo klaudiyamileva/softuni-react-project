@@ -4,7 +4,7 @@ import { BlogAdd } from './components/Blog/BlogAdd';
 import { BlogEdit } from './components/Blog/BlogEdit';
 import { BlogList } from './components/Blog/BlogList';
 import { Career } from './components/Careers/Career';
-import { CareersList } from './components/Careers/CareersList';
+import { AllCareers } from './components/Careers/AllCareers';
 import { Contact } from './components/Contact/Contact';
 import { Footer } from './components/Footer/Footer';
 import { Header } from "./components/Header/Header";
@@ -25,11 +25,11 @@ function App() {
                         <Route path='/' element={<Home />}></Route>
                         <Route path='/work' element={<Work />}></Route>
                         <Route path='/blog' element={<BlogList />}></Route>
-                        <Route path='/blog/:id' element={<Blog />}></Route>
+                        <Route path='/blog/:blogId' element={<Blog />}></Route>
                         <Route path='/blog/add' element={<BlogAdd />}></Route>
-                        <Route path='/blog/edit' element={<BlogEdit />}></Route>
-                        <Route path='/careers' element={<CareersList />}></Route>
-                        <Route path='/careers/:id' element={<Career />}></Route>
+                        <Route path='/blog/:blogId/edit' element={<BlogEdit />}></Route>
+                        <Route path='/careers' element={<AllCareers />}></Route>
+                        <Route path='/careers/:careerId' element={<Career />}></Route>
                         <Route path='/contact' element={<Contact />}></Route>
                         <Route path='/login' element={<Login />}></Route>
                         <Route path='/register' element={<Register />}></Route>

@@ -1,13 +1,25 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import styles from './Career.module.css';
+import * as careersService from '../../services/careersService';
 
 export const Career = () => {
+    const { careerId } = useParams();
+    const [career, setCareer] = useState({});
+
+    useEffect(() => {
+        careersService.getCareerById(careerId)
+            .then(result => {
+                setCareer(result);
+            });
+    }, [])
+
     return (
         <>
             <div className={styles.blog}>
-                <img className={styles.img} src="/styles/images/news1.jpg" alt="" />
-                <h2 className={styles.title}>Aenean ultrices lorem quis blandit tempor urabitur accumsan.</h2>
-                <p className={styles.content}>Donec non sem mi. In hac habitasse platea dictumst. Nullam a feugiat</p>
+                <img className={styles.img} src={career.imageUrl} alt="" />
+                <h2 className={styles.title}>{career.position}</h2>
+                <p className={styles.content}>{career.requirements}</p>
             </div>
             <Link className={styles.more} to="/contact">
                 Contact Us
