@@ -12,7 +12,6 @@ export const BlogAdd = () => {
 
         blogService.createBlog(formData)
             .then(() => {
-                console.log('post');
                 navigate('/blog');
             });
     };
