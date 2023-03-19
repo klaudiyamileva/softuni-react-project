@@ -36,9 +36,12 @@ export const Header = () => {
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
                         {auth.accessToken
-                            ? <Link to="/logout" className="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">
-                                logout
-                            </Link>
+                            ? <div>
+                                <Link to="/logout" className="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">
+                                    logout
+                                </Link>
+                                <p>Wellcome, {auth.email}</p>
+                            </div>
                             : <div>
                                 <Link to="/login" className="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">
                                     login

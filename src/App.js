@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Blog } from './components/Blog/Blog';
 import { BlogAdd } from './components/Blog/BlogAdd';
 import { BlogEdit } from './components/Blog/BlogEdit';
-import { BlogList } from './components/Blog/BlogList';
+import { AllBlogs } from './components/Blog/AllBlogs';
 import { Career } from './components/Careers/Career';
 import { AllCareers } from './components/Careers/AllCareers';
 import { Contact } from './components/Contact/Contact';
@@ -24,7 +24,7 @@ function App() {
                     <Routes>
                         <Route path='/' element={<Home />}></Route>
                         <Route path='/work' element={<Work />}></Route>
-                        <Route path='/blog' element={<BlogList />}></Route>
+                        <Route path='/blog' element={<AllBlogs />}></Route>
                         <Route path='/blog/:blogId' element={<Blog />}></Route>
                         <Route path='/blog/add' element={<BlogAdd />}></Route>
                         <Route path='/blog/:blogId/edit' element={<BlogEdit />}></Route>

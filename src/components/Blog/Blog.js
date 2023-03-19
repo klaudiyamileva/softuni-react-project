@@ -1,14 +1,26 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styles from './Blog.module.css';
+import * as blogService from '../../services/blogService';
+import { useEffect, useState } from 'react';
 
 export const Blog = () => {
+    const { blogId } = useParams();
+    const [blog, setBlog] = useState({});
+
+    useEffect(() => {
+        blogService.getBlogById(blogId)
+            .then(result => {
+                setBlog(result);
+            });
+    }, [blogId]);
+
     return (
         <div>
             <div className={styles.blog}>
-                <img className={styles.img} src="/styles/images/news1.jpg" alt="" />
-                <p className={styles.creator}>From: Blog's Creator</p>
-                <h2 className={styles.title}>Aenean ultrices lorem quis blandit tempor urabitur accumsan.</h2>
-                <p className={styles.content}>Donec non sem mi. In hac habitasse platea dictumst. Nullam a feugiat</p>
+                <img className={styles.img} src={blog.imageUrl} alt="" />
+                <p className={styles.creator}>From: {blog._ownerId}</p>
+                <h2 className={styles.title}>{blog.title}</h2>
+                <p className={styles.content}>{blog.content}</p>
             </div>
 
             <div className={styles['more-wrapper']}>
