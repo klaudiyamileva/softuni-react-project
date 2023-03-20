@@ -814,3 +814,6 @@ body {
   height: 100px;
 }
 
+.error {
+  color: red;
+}
