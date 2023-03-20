@@ -7,6 +7,9 @@ export const getBlogs = () => {
 };
 
 export const getBlogById = (blogId) => {
+    // const relations = encodeURIComponent('user=_ownerId:users');
+    // return request.get(`${baseUrl}?where=${search}&load=${relations}`);
+
     return request.get(`${baseUrl}/${blogId}`);
 };
 

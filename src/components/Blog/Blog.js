@@ -33,11 +33,14 @@ export const Blog = () => {
         e.preventDefault();
 
         let formData = Object.fromEntries(new FormData(e.target));
-        formData = {...formData, blogId};
+        formData = { ...formData, blogId };
 
         commentsService.createComment(formData)
-            .then(result => {
-                setComments(state => [...state, result]);
+            .then(() => {
+                commentsService.getByBlogId(blogId)
+                    .then(result => {
+                        setComments(result);
+                    });
             });
     };
 
@@ -69,7 +72,6 @@ export const Blog = () => {
                 ? <form onSubmit={onSubmit} className={styles.col} id="contact">
                     <h4> Add Your Comment </h4>
                     <input type="text" name="fullName" className={styles.form} placeholder="Full Name" />
-                    <input type="email" name="email" className={styles.form} placeholder="Email" />
                     <textarea name="comment" className={styles.form} placeholder="Comment" />
                     <input type="submit" className={styles.more} value="SENT" />
                 </form>

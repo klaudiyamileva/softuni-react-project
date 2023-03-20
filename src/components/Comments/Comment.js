@@ -10,7 +10,7 @@ export const Comment = ({
                     <div className={styles.bodycomment}>
                         <h5>
                             {comment.fullName} <br />
-                            <span> {comment.email} </span>
+                            <span> {comment.user.email} </span>
                         </h5>
                         <p className={styles.text}>
                             {comment.comment}
