@@ -7,12 +7,20 @@ export const getBlogs = () => {
 };
 
 export const getBlogById = (blogId) => {
-    // const relations = encodeURIComponent('user=_ownerId:users');
+    const relations = encodeURIComponent('user=_ownerId:users');
     // return request.get(`${baseUrl}?where=${search}&load=${relations}`);
 
-    return request.get(`${baseUrl}/${blogId}`);
+    return request.get(`${baseUrl}/${blogId}?load=${relations}`);
 };
 
 export const createBlog = (blogData) => {
     return request.post(baseUrl, blogData);
 };
+
+export const editBlog = (blogId, blogData) => {
+    return request.put(`${baseUrl}/${blogId}`, blogData);
+};
+
+export const deleteBlog = (blogId) => {
+    return request.del(`${baseUrl}/${blogId}`);
+}
