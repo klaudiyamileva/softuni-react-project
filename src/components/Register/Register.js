@@ -53,7 +53,7 @@ export const Register = () => {
         return valid;
     };
 
-    const handleSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
 
         if (validateForm()) {
@@ -70,12 +70,14 @@ export const Register = () => {
     };
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormData((state) => (
+            { ...state, [e.target.name]: e.target.value }
+        ));
     };
 
     return (
         <>
-            <form onSubmit={handleSubmit} className={styles.col} id="contact">
+            <form onSubmit={onSubmit} className={styles.col} id="contact">
                 <h4>Register</h4>
                 <div>
                     <input
