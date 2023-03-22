@@ -87,3 +87,23 @@ textarea.form {
     min-height: 8rem;
     resize: vertical;
 }
+
+.more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 1.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-family: 'Lato-Medium', sans-serif;
+    border: none;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.more:hover {
+    text-decoration: none;
+}

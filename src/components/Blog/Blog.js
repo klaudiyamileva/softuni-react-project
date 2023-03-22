@@ -126,21 +126,10 @@ export const Blog = () => {
             {auth.accessToken
                 ? <form onSubmit={onSubmit} className={styles.col} id="contact">
                     <h4> Add Your Comment </h4>
-                    <input
-                        type="text"
-                        name="fullName"
-                        className={styles.form}
-                        placeholder="Full Name"
-                        value={formData.fullName}
-                        onChange={handleChange}
+                    <input type="text" name="fullName" className={styles.form} placeholder="Full Name" value={formData.fullName} onChange={handleChange}
                     />
                     {formErrors.fullName && <div className="error">{formErrors.fullName}</div>}
-                    <textarea
-                        name="comment"
-                        className={styles.form}
-                        placeholder="Comment"
-                        value={formData.comment}
-                        onChange={handleChange}
+                    <textarea name="comment" className={styles.form} placeholder="Comment" value={formData.comment} onChange={handleChange}
                     />
                     {formErrors.comment && <div className="error">{formErrors.comment}</div>}
                     <input type="submit" className={styles.more} value="SENT" />
