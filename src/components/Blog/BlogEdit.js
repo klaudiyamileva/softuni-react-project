@@ -1,11 +1,13 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from './BlogAdd.module.css';
 import * as blogService from '../../services/blogService';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const BlogEdit = () => {
     const { blogId } = useParams();
     const navigate = useNavigate();
+    const { auth } = useContext(AuthContext);
 
     const [blog, setBlog] = useState({
         imageUrl: '',
@@ -67,6 +69,15 @@ export const BlogEdit = () => {
             { ...state, [e.target.name]: e.target.value }
         ));
     };
+
+    if (auth._id !== blog._ownerId) {
+        return (
+            <>
+                <p>You do not have permission to edit this blog.</p>
+                <Link to='/blog'>Go back to blogs</Link>
+            </>
+        );
+    }
 
     return (
         <form onSubmit={onSubmit} className={styles.col} id="contact">

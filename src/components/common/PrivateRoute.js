@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 
-export const PrivateRoute = () => {
+export const PrivateRoute = ({isOwner}) => {
     const { isAuthenticated } = useContext(AuthContext);
 
     if (!isAuthenticated) {

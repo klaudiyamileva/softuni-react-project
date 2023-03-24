@@ -15,7 +15,6 @@ import { Register } from './components/Register/Register';
 import { Work } from './components/Work/Work';
 import { AuthProvider } from './contexts/AuthContext';
 import { PrivateRoute } from './components/common/PrivateRoute';
-import { BlogOwner } from './components/common/BlogOwner';
 
 function App() {
     return (
@@ -32,10 +31,8 @@ function App() {
                         <Route path='/careers/:careerId' element={<Career />}></Route>
                         <Route path='/login' element={<Login />}></Route>
                         <Route path='/register' element={<Register />}></Route>
-                        <Route element={<BlogOwner />}>
-                            <Route path='/blog/:blogId/edit' element={<BlogEdit />}></Route>
-                        </Route>
                         <Route element={<PrivateRoute />}>
+                            <Route path='/blog/:blogId/edit' element={<BlogEdit />}></Route>
                             <Route path='/blog/add' element={<BlogAdd />}></Route>
                             <Route path='/contact' element={<Contact />}></Route>
                             <Route path='/logout' element={<Logout />}></Route>
