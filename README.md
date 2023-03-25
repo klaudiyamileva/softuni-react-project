@@ -20,4 +20,4 @@ The project should now be running on your local machine at http://localhost:3000
 
 Credits
 
-This project was created by Klaudiya Mileva. Special thanks to the SoftUni team for providing the practice server.
+This project was created with SoftUni Practice Server. 
