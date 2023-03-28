@@ -73,6 +73,7 @@ textarea.form {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 20px;
 }
 
 .cardcomment {
@@ -183,4 +184,8 @@ p.content {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 100px;
+}
+
+.comments {
+  margin-bottom: 50px;
 }

@@ -6,19 +6,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Comment } from '../Comments/Comment';
+import { AddComment } from '../Comments/AddComment';
 
 export const Blog = () => {
     const [blog, setBlog] = useState({});
     const [comments, setComments] = useState([]);
     const [isOwner, setIsOwner] = useState(false);
-    const [formData, setFormData] = useState({
-        fullName: '',
-        comment: ''
-    });
-    const [formErrors, setFormErrors] = useState({
-        fullName: '',
-        comment: ''
-    });
     const { blogId } = useParams();
     const { auth } = useContext(AuthContext);
     const creator = useRef('');
@@ -40,45 +33,15 @@ export const Blog = () => {
             });
     }, []);
 
-    const validateForm = () => {
-        let valid = true;
-        const errors = {};
-
-        if (!formData.fullName) {
-            errors.fullName = 'Full name is required';
-            valid = false;
-        }
-
-        if (!formData.comment) {
-            errors.comment = 'Comment is required';
-            valid = false;
-        }
-
-        setFormErrors(errors);
-
-        return valid;
-    }
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-
-        if (validateForm()) {
-            const newComment = { ...formData, blogId };
-
-            commentsService.createComment(newComment)
-                .then(() => {
-                    commentsService.getByBlogId(blogId)
-                        .then(result => {
-                            setComments(result);
-                        });
+    const createCommentHandler = (newComment) => {
+        commentsService.createComment(newComment)
+        .then(() => {
+            commentsService.getByBlogId(blogId)
+                .then(result => {
+                    setComments(result);
                 });
-
-            setFormData({
-                fullName: '',
-                comment: ''
-            });
-        }
-    };
+        });
+    }
 
     const onDeleteClick = (e) => {
         e.preventDefault();
@@ -92,12 +55,6 @@ export const Blog = () => {
                 });
         };
     };
-
-    const handleChange = (e) => {
-        setFormData((state) => (
-            { ...state, [e.target.name]: e.target.value }
-        ));
-    }
 
     return (
         <div>
@@ -123,17 +80,8 @@ export const Blog = () => {
                 }
             </div>
 
-            {auth.accessToken
-                ? <form onSubmit={onSubmit} className={styles.col} id="contact">
-                    <h4> Add Your Comment </h4>
-                    <input type="text" name="fullName" className={styles.form} placeholder="Full Name" value={formData.fullName} onChange={handleChange}
-                    />
-                    {formErrors.fullName && <div className="error">{formErrors.fullName}</div>}
-                    <textarea name="comment" className={styles.form} placeholder="Comment" value={formData.comment} onChange={handleChange}
-                    />
-                    {formErrors.comment && <div className="error">{formErrors.comment}</div>}
-                    <input type="submit" className={styles.more} value="SENT" />
-                </form>
+            {auth.accessToken 
+                ? <AddComment onCreateComment={createCommentHandler}/>
                 : <p className={styles.text}>
                     If you want to add a comment <Link to='/login'>Log In here</Link>
                 </p>}
