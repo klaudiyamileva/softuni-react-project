@@ -8,10 +8,16 @@ export const getBlogs = () => {
 
 export const getBlogById = (blogId) => {
     const relations = encodeURIComponent('user=_ownerId:users');
+    // const search = encodeURIComponent(`_ownerId="${gameId}"`);
     // return request.get(`${baseUrl}?where=${search}&load=${relations}`);
 
     return request.get(`${baseUrl}/${blogId}?load=${relations}`);
 };
+
+export const getBlogByOwnerId = (ownerId) => {
+    const search = encodeURIComponent(`_ownerId="${ownerId}"`);
+    return request.get(`${baseUrl}/?where=${search}`);
+}
 
 export const createBlog = (blogData) => {
     return request.post(baseUrl, blogData);

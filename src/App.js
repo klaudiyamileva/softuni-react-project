@@ -15,6 +15,7 @@ import { Register } from './components/Register/Register';
 import { Work } from './components/Work/Work';
 import { AuthProvider } from './contexts/AuthContext';
 import { PrivateRoute } from './components/common/PrivateRoute';
+import { Profile } from './components/Profile/Profile';
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                             <Route path='/blog/add' element={<BlogAdd />}></Route>
                             <Route path='/contact' element={<Contact />}></Route>
                             <Route path='/logout' element={<Logout />}></Route>
+                            <Route path='/profile' element={<Profile />}></Route>
                         </Route>
                     </Routes>
                 </main>

@@ -1,0 +1,64 @@
+h4 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    font-family: 'Lato-Medium', sans-serif;
+}
+
+.more {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-family: 'Lato-Medium', sans-serif;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 1.5rem;
+    border: none;
+    width: 200px;
+    margin: 5px;
+}
+
+.more:hover {
+    text-decoration: none;
+}
+
+.email {
+    border: none;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    width: 300px;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-family: 'Lato-Medium', sans-serif;
+    font-size: 20px;
+    margin: 50px;
+}
+
+.carousel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}

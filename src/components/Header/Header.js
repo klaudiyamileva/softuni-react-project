@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import styles from "./Header.module.css"
 
 export const Header = () => {
     const { auth } = useContext(AuthContext);
@@ -36,12 +37,14 @@ export const Header = () => {
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
                         {auth.accessToken
-                            ? <div>
-                                <Link to="/logout" className="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">
-                                    logout
-                                </Link>
-                                <p>Wellcome, {auth.email}</p>
-                            </div>
+                            ? <>
+                                <Link to='/profile' className={styles.more} >MY PROFILE</Link>
+                                <div>
+                                    <Link to="/logout" className="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">
+                                        logout
+                                    </Link>
+                                </div>
+                            </>
                             : <div>
                                 <Link to="/login" className="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">
                                     login
