@@ -1,16 +1,14 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from './Blog.module.css';
 import * as blogService from '../../services/blogService';
-import * as commentsService from '../../services/commentsService';
 import { useEffect, useRef, useState } from 'react';
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Comment } from '../Comments/Comment';
-import { AddComment } from '../Comments/AddComment';
+import { CommentsList } from '../Comments/CommentsList';
+import { Likes } from '../Likes/Likes';
 
 export const Blog = () => {
     const [blog, setBlog] = useState({});
-    const [comments, setComments] = useState([]);
     const [isOwner, setIsOwner] = useState(false);
     const { blogId } = useParams();
     const { auth } = useContext(AuthContext);
@@ -26,22 +24,7 @@ export const Blog = () => {
                     setIsOwner(true);
                 };
             });
-
-        commentsService.getByBlogId(blogId)
-            .then(result => {
-                setComments(result);
-            });
     }, []);
-
-    const createCommentHandler = (newComment) => {
-        commentsService.createComment(newComment)
-        .then(() => {
-            commentsService.getByBlogId(blogId)
-                .then(result => {
-                    setComments(result);
-                });
-        });
-    }
 
     const onDeleteClick = (e) => {
         e.preventDefault();
@@ -65,26 +48,13 @@ export const Blog = () => {
                 <p className={styles.content}>{blog.content}</p>
             </div>
 
-            {isOwner &&
-                <div className={styles['more-wrapper']}>
+            {isOwner && <div className={styles['more-wrapper']}>
                     <Link to={`/blog/${blog._id}/edit`} className={styles.more}>Edit</Link>
                     <button onClick={onDeleteClick} className={styles.more}>Delete</button>
                 </div>
             }
-
-            <div className={styles.comments}>
-                <h2>Comments</h2>
-                {comments.length > 0
-                    ? comments.map(c => <Comment key={c._id} comment={c} />)
-                    : <p>No comments yet</p>
-                }
-            </div>
-
-            {auth.accessToken 
-                ? <AddComment onCreateComment={createCommentHandler}/>
-                : <p className={styles.text}>
-                    If you want to add a comment <Link to='/login'>Log In here</Link>
-                </p>}
+            <Likes isOwner={isOwner}/>
+            <CommentsList />
         </div>
     );
 };
