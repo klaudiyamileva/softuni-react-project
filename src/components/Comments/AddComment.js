@@ -68,6 +68,5 @@ export const AddComment = ({
             {formErrors.comment && <div className="error">{formErrors.comment}</div>}
             <input type="submit" className={styles.more} value="SENT" />
         </form>
-
     )
 }
