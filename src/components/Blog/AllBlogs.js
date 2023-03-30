@@ -15,11 +15,22 @@ export const AllBlogs = () => {
     const [sort, setSort] = useState('Latest');
 
     useEffect(() => {
-        blogService.getLatestBlogs(page)
-            .then(result => {
-                setBlogs(result);
-            });
+        getLatest(page);
     }, []);
+
+    const getOldest = (page) => {
+        blogService.getOldestBlogs(page)
+        .then(result => {
+            setBlogs(result);
+        });
+    }
+
+    const getLatest = (page) => {
+        blogService.getLatestBlogs(page)
+        .then(result => {
+            setBlogs(result);
+        });
+    }
 
     const onSubmit = (e, searchedTitle) => {
         e.preventDefault();
@@ -38,16 +49,12 @@ export const AllBlogs = () => {
     const onChange = (value) => {
         if (value === 'Latest') {
             setSort('Latest');
-            blogService.getLatestBlogs(page)
-                .then(result => {
-                    setBlogs(result);
-                });
+            setPage(1)
+            getLatest(1);
         } else {
             setSort('Oldest');
-            blogService.getOldestBlogs(page)
-                .then(result => {
-                    setBlogs(result);
-                });
+            setPage(1)
+            getOldest(1);
         }
     }
 
@@ -63,17 +70,9 @@ export const AllBlogs = () => {
 
     const changeBlogs = (page) => {
         if (sort === 'Latest') {
-            blogService.getLatestBlogs(page)
-                .then(result => {
-                    setBlogs(result);
-                });
-            console.log(page);
+            getLatest(page)
         } else {
-            blogService.getOldestBlogs(page)
-                .then(result => {
-                    setBlogs(result);
-                });
-            console.log(page);
+            getOldest(page)
         }
     }
 
