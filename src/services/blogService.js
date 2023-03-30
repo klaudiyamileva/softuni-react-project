@@ -2,6 +2,10 @@ import * as request from "./requester";
 
 const baseUrl = 'http://localhost:3030/data/blogs';
 
+export const getAllBlogs = () => {
+    return request.get(baseUrl);
+}
+
 export const getOldestBlogs = (page) => {
     let skip = (page - 1) * 3;
     const pagination = `offset=${skip}&pageSize=3`;

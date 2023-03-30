@@ -94,7 +94,7 @@ export const AllBlogs = () => {
                     }
                 </div>
             </div>
-            <Pagination previousPage={previousPageHandler} nextPage={nextPageHandler} />
+            <Pagination previousPage={previousPageHandler} nextPage={nextPageHandler} page={page}/>
         </>
     );
 };
