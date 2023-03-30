@@ -34,7 +34,7 @@ export const CommentsList = () => {
                 <h2>Comments</h2>
                 {comments.length > 0
                     ? comments.map(c => <Comment key={c._id} comment={c} />)
-                    : <p>No comments yet</p>
+                    : <p className={styles.text}>No comments yet</p>
                 }
             </div>
 
@@ -42,7 +42,7 @@ export const CommentsList = () => {
                 auth.accessToken
                     ? <AddComment onCreateComment={createCommentHandler} />
                     : <p className={styles.text}>
-                        If you want to add a comment <Link to='/login'>Log In here</Link>
+                        If you want to add a comment or like <Link to='/login'>Log In here</Link>
                     </p>
             }
         </>

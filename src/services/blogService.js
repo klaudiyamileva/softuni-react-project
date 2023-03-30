@@ -2,14 +2,21 @@ import * as request from "./requester";
 
 const baseUrl = 'http://localhost:3030/data/blogs';
 
-export const getBlogs = () => {
-    return request.get(baseUrl);
+export const getOldestBlogs = (page) => {
+    let skip = (page - 1) * 3;
+    const pagination = `offset=${skip}&pageSize=3`;
+    return request.get(`${baseUrl}?${pagination}`);
+};
+
+export const getLatestBlogs = (page) => {
+    let skip = (page - 1) * 3;
+    const pagination = `offset=${skip}&pageSize=3`;
+    const sorted = encodeURIComponent('_createdOn desc');
+    return request.get(`${baseUrl}?sortBy=${sorted}&${pagination}`);
 };
 
 export const getBlogById = (blogId) => {
     const relations = encodeURIComponent('user=_ownerId:users');
-    // const search = encodeURIComponent(`_ownerId="${gameId}"`);
-    // return request.get(`${baseUrl}?where=${search}&load=${relations}`);
 
     return request.get(`${baseUrl}/${blogId}?load=${relations}`);
 };
