@@ -20,16 +20,16 @@ export const AllBlogs = () => {
 
     const getOldest = (page) => {
         blogService.getOldestBlogs(page)
-        .then(result => {
-            setBlogs(result);
-        });
+            .then(result => {
+                setBlogs(result);
+            });
     }
 
     const getLatest = (page) => {
         blogService.getLatestBlogs(page)
-        .then(result => {
-            setBlogs(result);
-        });
+            .then(result => {
+                setBlogs(result);
+            });
     }
 
     const onSubmit = (e, searchedTitle) => {
@@ -94,7 +94,7 @@ export const AllBlogs = () => {
                     }
                 </div>
             </div>
-            <Pagination previousPage={previousPageHandler} nextPage={nextPageHandler} page={page}/>
+            <Pagination previousPage={previousPageHandler} nextPage={nextPageHandler} page={page} />
         </>
     );
 };
