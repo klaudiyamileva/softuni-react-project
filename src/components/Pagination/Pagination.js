@@ -7,30 +7,30 @@ export const Pagination = ({
     nextPage,
     page,
 }) => {
-    const [skip, setSkip] = useState(0);
+    // const [skip, setSkip] = useState(0);
     const [isNextPageClickable, setIsNextPageClickable] = useState(true);
 
-    useEffect(() => {
-        setSkip((page - 1) * 3);
-    }, [page]);
-
-    useEffect(() => {
-        const setIsClickable = async () => {
-            const result = await blogService.getAllBlogs();
-            const number = skip + 3;
-            setIsNextPageClickable(number < result.length);
-        };
-        setIsClickable();
-    }, [skip]);
+    // useEffect(() => {
+    //     setSkip((page - 1) * 3);
+    // }, [page]);
 
     // useEffect(() => {
     //     const setIsClickable = async () => {
     //         const result = await blogService.getAllBlogs();
-    //         const number = result.length - (((page - 1) * 3) + 3);
-    //         setIsNextPageClickable(number >= 3);
+    //         const number = skip + 3;
+    //         setIsNextPageClickable(number < result.length);
     //     };
     //     setIsClickable();
-    // }, [page]);
+    // }, [skip]);
+
+    useEffect(() => {
+        const setIsClickable = async () => {
+            const result = await blogService.getAllBlogs();
+            const currentBlogs = ((page - 1) * 3) + 3;
+            setIsNextPageClickable(currentBlogs < result.length);
+        };
+        setIsClickable();
+    }, [page]);
 
     return (
         <div className={styles.pagination}>
