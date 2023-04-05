@@ -56,7 +56,7 @@ describe('Blog component', () => {
   });
 
   it('does not render edit and delete buttons for non-owner', async () => {
-    const { container } = render(
+    render(
       <BrowserRouter>
         <AuthContext.Provider value={{ auth: { _id: 'not_owner' } }}>
           <Blog />
