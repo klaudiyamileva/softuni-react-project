@@ -6,27 +6,27 @@ import { BlogsList } from './BlogsList';
 import { Search } from '../Serach/Search';
 import * as searchService from '../../services/searchService';
 import { Sort } from '../Sort/Sort';
-import { Pagination } from '../Pagination/Pagination';
+// import { Pagination } from '../Pagination/Pagination';
 
 export const AllBlogs = () => {
     const [blogs, setBlogs] = useState([]);
     const [searchedBlogs, setSearchedBlogs] = useState([]);
-    const [page, setPage] = useState(1);
+    // const [page, setPage] = useState(1);
     const [sort, setSort] = useState('Latest');
 
     useEffect(() => {
-        getLatest(page);
+        getLatest();
     }, []);
 
-    const getOldest = (page) => {
-        blogService.getOldestBlogs(page)
+    const getOldest = () => {
+        blogService.getOldestBlogs()
             .then(result => {
                 setBlogs(result);
             });
     }
 
-    const getLatest = (page) => {
-        blogService.getLatestBlogs(page)
+    const getLatest = () => {
+        blogService.getLatestBlogs()
             .then(result => {
                 setBlogs(result);
             });
@@ -49,32 +49,30 @@ export const AllBlogs = () => {
     const onChange = (value) => {
         if (value === 'Latest') {
             setSort('Latest');
-            setPage(1)
-            getLatest(1);
+            getLatest();
         } else {
             setSort('Oldest');
-            setPage(1)
-            getOldest(1);
+            getOldest();
         }
     }
 
-    const previousPageHandler = () => {
-        setPage(state => state - 1);
-        changeBlogs(page - 1);
-    }
+    // const previousPageHandler = () => {
+    //     setPage(state => state - 1);
+    //     changeBlogs(page - 1);
+    // }
 
-    const nextPageHandler = () => {
-        setPage(state => state + 1);
-        changeBlogs(page + 1);
-    }
+    // const nextPageHandler = () => {
+    //     setPage(state => state + 1);
+    //     changeBlogs(page + 1);
+    // }
 
-    const changeBlogs = (page) => {
-        if (sort === 'Latest') {
-            getLatest(page)
-        } else {
-            getOldest(page)
-        }
-    }
+    // const changeBlogs = (page) => {
+    //     if (sort === 'Latest') {
+    //         getLatest(page)
+    //     } else {
+    //         getOldest(page)
+    //     }
+    // }
 
     return (
         <>
@@ -94,7 +92,7 @@ export const AllBlogs = () => {
                     }
                 </div>
             </div>
-            <Pagination previousPage={previousPageHandler} nextPage={nextPageHandler} page={page} />
+            {/* <Pagination previousPage={previousPageHandler} nextPage={nextPageHandler} page={page} /> */}
         </>
     );
 };
